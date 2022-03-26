@@ -31,9 +31,11 @@ public class MyCRUDSampleController {
 //	@PostMapping("/cre")
 	@RequestMapping("/cre")
 	public String create(@RequestParam(required = true) String txt, @RequestParam(required = false) String test)  {
-		serv.insert(txt);
+		MyCRUDSampleEntity entity=MyCRUDSampleEntity.builder().txt(txt).build();
+		System.out.println(entity.getId());
+		serv.insert(entity);
 		
-		return String.format("txt : %s, test : %s", txt, test);		
+		return String.format("id: %d, txt : %s, test : %s", entity.getId(), txt, test);		
 	}
 	
 //	@GetMapping("/ret")

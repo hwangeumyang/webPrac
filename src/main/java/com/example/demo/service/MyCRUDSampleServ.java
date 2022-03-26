@@ -14,11 +14,10 @@ public class MyCRUDSampleServ {
 	MyCRUDSampleRepo repo;
 	
 	//C
-	public String insert(String txt) {
-		MyCRUDSampleEntity entity=MyCRUDSampleEntity.builder().txt(txt).build();
+	public MyCRUDSampleEntity insert(MyCRUDSampleEntity entity) {
 		repo.save(entity);
 		
-		return entity.getTxt();
+		return retrieve(entity.getId());
 	}
 	//R
 	public MyCRUDSampleEntity retrieve(int id) {
